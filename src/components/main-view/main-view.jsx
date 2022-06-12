@@ -1,5 +1,7 @@
 import React from 'react';
 
+// React component names must begin with capital letter
+
 export class MainView extends React.Component {
 
     render() {
