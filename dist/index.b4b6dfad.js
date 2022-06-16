@@ -27122,20 +27122,11 @@ var _movieCard = require("../movie-card/movie-card");
 var _movieView = require("../movie-view/movie-view");
 class MainView extends (0, _reactDefault.default).Component {
     constructor(){
-        super(); // related to object-oriented programming; initializes component's state
+        super();
         this.state = {
             movies: [],
             selectedMovie: null
         };
-    }
-    compnentDidMount() {
-        (0, _axiosDefault.default).get("https://ohmymovies.herokuapp.com/movies").then((response)=>{
-            this.setState({
-                movies: response.data
-            });
-        }).catch((error)=>{
-            console.log(error);
-        });
     }
     setSelectedMovie(newSelectedMovie) {
         this.setState({
@@ -27148,8 +27139,8 @@ class MainView extends (0, _reactDefault.default).Component {
             className: "main-view"
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 42,
-            columnNumber: 41
+            lineNumber: 27,
+            columnNumber: 37
         }, this);
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "main-view",
@@ -27160,8 +27151,8 @@ class MainView extends (0, _reactDefault.default).Component {
                 }
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 47,
-                columnNumber: 19
+                lineNumber: 32,
+                columnNumber: 11
             }, this) : movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                     movie: movie,
                     onMovieClick: (newSelectedMovie)=>{
@@ -27169,14 +27160,26 @@ class MainView extends (0, _reactDefault.default).Component {
                     }
                 }, movie._id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 49,
-                    columnNumber: 17
+                    lineNumber: 40,
+                    columnNumber: 13
                 }, this))
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 45,
-            columnNumber: 13
+            lineNumber: 30,
+            columnNumber: 7
         }, this);
+    }
+    componentDidMount() {
+        (0, _axiosDefault.default).get("https://ohmymovies.herokuapp.com/movies").then((response)=>{
+            this.setState({
+                movies: response.data
+            });
+        }).catch((error)=>{
+            console.log(error);
+        });
+    }
+    setSelectedMovie(newSelectedMovie) {
+    // same code
     }
 }
 exports.default = MainView;
