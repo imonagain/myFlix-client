@@ -1,0 +1,19 @@
+$lightblue: #D5DFE5;
+$white: #FFF;
+$black: #000;
+$red: #a42424;
+$purple: #4e126e;
+
+
+* {
+    background-color: $lightblue;
+    font-family: Arial, Helvetica, sans-serif;
+    color: $black;
+}
+
+button {
+    background-color: $white;
+    color: $black;
+    border-color: $red;
+    border-radius: 15px;
+}
