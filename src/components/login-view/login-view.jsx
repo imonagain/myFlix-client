@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 
 import "./login-view.scss";
 
@@ -43,7 +44,7 @@ export function LoginView(props) {
       </button>
       <br />
       <button type="submit" onClick={handleRegister}>
-        Register Here
+        Register
       </button>
     </form>
   );
