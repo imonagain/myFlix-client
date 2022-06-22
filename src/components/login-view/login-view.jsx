@@ -29,7 +29,7 @@ export function LoginView(props) {
 
   return (
     <Container>
-      <Row>
+      <Row md={6}>
         <Col>
           <CardGroup>
             <Card>
