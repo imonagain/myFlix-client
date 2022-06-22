@@ -1,14 +1,7 @@
 * {
-  color: #4e126e;
+  color: #000;
   background-color: #d5dfe5;
   font-family: Arial, Helvetica, sans-serif;
-}
-
-button {
-  color: #000;
-  background-color: #fff;
-  border-color: #a42424;
-  border-radius: 15px;
 }
 
 * {
@@ -17,11 +10,10 @@ button {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-button {
+* {
   color: #000;
-  background-color: #fff;
-  border-color: #a42424;
-  border-radius: 15px;
+  background-color: #d5dfe5;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .my-flix {
@@ -32,4 +24,4 @@ img {
   width: 200px;
 }
 
-/*# sourceMappingURL=index.e3f97e84.css.map */
+/*# sourceMappingURL=index.27d8da6b.css.map */

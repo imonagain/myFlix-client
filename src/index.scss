@@ -1,9 +1,11 @@
-$color: steelblue;
+$lightblue: #D5DFE5;
+$white: #FFF;
+$black: #000;
+$red: #a42424;
+$purple: #4e126e;
 
-.my-flix {
-  color: $color;
-}
 
-img {
-  width:200px;
+* {
+    background-color: $lightblue;
+    font-family: Arial, Helvetica, sans-serif;
 }
