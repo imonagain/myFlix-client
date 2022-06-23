@@ -18,7 +18,7 @@ export function RegistrationView(props) {
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
     console.log(username, password, email, birthday);
     props.onRegister(false);
@@ -76,7 +76,7 @@ export function RegistrationView(props) {
                   <Button
                     variant="primary"
                     type="submit"
-                    onClick={handleSubmit}
+                    onClick={handleRegister}
                   >
                     Submit
                   </Button>
