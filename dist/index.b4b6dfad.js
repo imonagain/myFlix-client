@@ -33887,7 +33887,7 @@ MovieCard.propTypes = {
     Genre: (0, _propTypesDefault.default).shape({
         Name: (0, _propTypesDefault.default).string
     }),
-    Year: (0, _propTypesDefault.default).string.isRequired,
+    Year: (0, _propTypesDefault.default).string,
     Description: (0, _propTypesDefault.default).string,
     onMovieClick: (0, _propTypesDefault.default).func.isRequired
 };
