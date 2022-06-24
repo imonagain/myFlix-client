@@ -9,8 +9,6 @@ import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 
-// React component names must begin with capital letter
-
 export class MainView extends React.Component {
   constructor() {
     super();
@@ -55,7 +53,6 @@ export class MainView extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        // Assign the result to the state
         this.setState({
           movies: response.data,
         });
@@ -70,19 +67,6 @@ export class MainView extends React.Component {
       registered,
     });
   }
-
-  // componentDidMount() {
-  //   axios
-  //     .get("https://ohmymovies.herokuapp.com/movies")
-  //     .then((response) => {
-  //       this.setState({
-  //         movies: response.data,
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
 
   componentDidMount() {
     let accessToken = localStorage.getItem("token");
