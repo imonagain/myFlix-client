@@ -73,7 +73,7 @@ MovieView.propTypes = {
   Genre: PropTypes.shape({
     Name: PropTypes.string,
   }),
-  Year: PropTypes.string.isRequired,
+  Year: PropTypes.string,
   Description: PropTypes.string,
 
   onBackClick: PropTypes.func.isRequired,
