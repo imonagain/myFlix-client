@@ -10,7 +10,7 @@ import {
   Button,
 } from "react-bootstrap";
 
-import "./login-view.scss";
+// import "./login-view.scss";
 
 //login for user - taking username and password
 export function LoginView(props) {

@@ -9,7 +9,7 @@ import {
   Container,
 } from "react-bootstrap";
 
-import "./registration-view.scss";
+// import "./registration-view.scss";
 
 //user registration form taking necessary user details
 export function RegistrationView(props) {
