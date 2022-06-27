@@ -11,25 +11,29 @@ export class DirectorView extends React.Component {
 
     return (
       <Container>
-        <Card>
-          <Card.Header>
-            <h3>{director.Name}</h3>
-          </Card.Header>
-          <Card.Body>
-            <Card.Text>
-              <b>Biography: &nbsp;</b>
-              {director.Bio}
-            </Card.Text>
-            <Button
-              variant="primary"
-              onClick={() => {
-                onBackClick();
-              }}
-            >
-              Return
-            </Button>
-          </Card.Body>
-        </Card>
+        <Row>
+          <Col>
+            <Card>
+              <Card.Header>
+                <h3>{director.Name}</h3>
+              </Card.Header>
+              <Card.Body>
+                <Card.Text>
+                  <b>Biography: &nbsp;</b>
+                  {director.Bio}
+                </Card.Text>
+                <Button
+                  variant="primary"
+                  onClick={() => {
+                    onBackClick();
+                  }}
+                >
+                  Back
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
       </Container>
     );
   }

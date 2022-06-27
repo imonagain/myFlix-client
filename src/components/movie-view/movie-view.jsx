@@ -36,17 +36,10 @@ export class MovieView extends React.Component {
       })
       .catch((e) => console.log(e));
   }
-  componentDidMount() {
-    const accessToken = localStorage.getItem("token");
-    this.getUser(accessToken);
-  }
 
-  // Add Favorite movie
-  addFavMovie = () => {
-    let token = localStorage.getItem("token");
-    let user = localStorage.getItem("user");
-    let userFavMovies = this.state.FavoriteMovies;
-    let isFav = userFavMovies.includes(this.props.movie._id);
+  addFavoriteMovie = () => {
+    let userFavorites = this.state.FavoriteMovies;
+    let isFav = userFavorites.includes(this.props.movie._id);
     if (!isFav) {
       axios
         .post(
@@ -75,8 +68,7 @@ export class MovieView extends React.Component {
     }
   };
 
-  // Delete a movie from Favorite movies
-  removeFavMovie = () => {
+  removeFavoriteMovie = () => {
     let token = localStorage.getItem("token");
     let user = localStorage.getItem("user");
     axios
@@ -98,10 +90,15 @@ export class MovieView extends React.Component {
       });
   };
 
+  componentDidMount() {
+    const accessToken = localStorage.getItem("token");
+    this.getUser(accessToken);
+  }
+
   render() {
     const { movie, onBackClick } = this.props;
-    let userFavMovies = this.state.FavoriteMovies;
-    let isFav = userFavMovies.includes(this.props.movie._id);
+    let userFavorites = this.state.FavoriteMovies;
+    let isFav = userFavorites.includes(this.props.movie._id);
 
     // FIXME Bootstrap styling
 
@@ -109,25 +106,25 @@ export class MovieView extends React.Component {
       <Container>
         <Row>
           <Col>
-            <Card className="movie-view__card">
+            <Card>
               <Card.Body>
-                <Card.Img
+                {/* <Card.Img
                   className="movie-view__image"
                   variant="top"
                   src={movie.ImagePath}
-                />
-                <Card.Title className="title-style">{movie.Title}</Card.Title>
-                <Card.Text className="text-style">
+                /> */}
+                <Card.Title>
+                  <h3>{movie.Title}</h3>
+                </Card.Title>
+                <Card.Text>
                   <b>Genre:&nbsp;</b>
                   <Link to={`/genres/${movie.Genre.Name}`}>
                     {movie.Genre.Name}
-                    {/* <Button variant="link">more info</Button> */}
                   </Link>
                   <br />
                   <b>Director: &nbsp;</b>
                   <Link to={`/directors/${movie.Director.Name}`}>
                     {movie.Director.Name}
-                    {/* <Button variant="link">more info</Button> */}
                   </Link>
                   <br />
                   <b>Description: </b>
@@ -147,16 +144,16 @@ export class MovieView extends React.Component {
                   <Button
                     className="add-list__button"
                     variant="primary"
-                    onClick={this.addFavMovie}
+                    onClick={this.addFavoriteMovie}
                   >
-                    Add to your list
+                    Add to your Favorites
                   </Button>
                 )}
                 {isFav && (
                   <Button
                     className="add-list__button"
                     variant="secondary"
-                    onClick={this.removeFavMovie}
+                    onClick={this.removeFavoriteMovie}
                   >
                     Remove from your list
                   </Button>
@@ -172,9 +169,12 @@ export class MovieView extends React.Component {
 
 MovieView.propTypes = {
   movie: PropTypes.shape({
+    ImagePath: PropTypes.string.isRequired,
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
-    ImagePath: PropTypes.string.isRequired,
+    Director: PropTypes.shape({
+      Bio: PropTypes.string.isRequired,
+    }).isRequired,
     Genre: PropTypes.shape({
       Name: PropTypes.string.isRequired,
     }),

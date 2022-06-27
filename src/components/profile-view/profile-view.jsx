@@ -3,8 +3,7 @@ import axios from "axios";
 import {
   Form,
   Button,
-  Card,
-  CardGroup,
+  Stack,
   Container,
   Col,
   Row,
@@ -47,8 +46,6 @@ export function ProfileView({ movies }) {
   };
 
   const updateUser = () => {
-    let token = localStorage.getItem("token");
-    let user = localStorage.getItem("user");
     axios
       .put(
         `https://ohmymovies.herokuapp.com/users/${user}`,
@@ -70,14 +67,12 @@ export function ProfileView({ movies }) {
           console.log(response.data);
       })
       .catch((e) => {
-        console.log("Error");
+        console.log(error);
       });
   };
 
   const deleteUser = () => {
     setShowModal(false);
-    let token = localStorage.getItem("token");
-    let user = localStorage.getItem("user");
     axios
       .delete(`https://ohmymovies.herokuapp.com/users/${user}`, {
         headers: {
@@ -92,17 +87,16 @@ export function ProfileView({ movies }) {
         window.open("/", "_self");
       })
       .catch((e) => {
-        console.log("Error");
+        console.log(error);
       });
   };
 
   const showFavoritesList = () => {
-    console.log(movies);
     if (movies.length + 0) {
       return (
         <Row className="justify-content-md-center">
           {FavoriteMovies.length === 0 ? (
-            <h5>Add some movies to your list</h5>
+            <h5>List is empty</h5>
           ) : (
             FavoriteMovies.map((movieId, i) => (
               <Col key={`${i}-${movieId}`}>
@@ -120,11 +114,7 @@ export function ProfileView({ movies }) {
 
   const cancelUserModal = () => {
     return (
-      <Modal
-        style={{ background: "transparent" }}
-        show={show}
-        onHide={handleClose}
-      >
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Delete your Account</Modal.Title>
         </Modal.Header>
@@ -138,7 +128,6 @@ export function ProfileView({ movies }) {
           </Button>
         </Modal.Footer>
       </Modal>
-      // <DeleteModal />
     );
   };
 
@@ -146,18 +135,73 @@ export function ProfileView({ movies }) {
     <Container>
       <Row>
         <Col>
+          {/* <Button
+            variant="outline-primary"
+            onClick={() => {
+              onBackClick();
+            }}
+          >
+            Back
+          </Button> */}
+          <br />
           <h3>Your Profile Information</h3>
+          <Form>
+            <Form.Group className="mb-3" controlId="username">
+              <Form.Label>Username:</Form.Label>
+              <Form.Control
+                onChange={(e) => setUsername(e.target.value)}
+                value={username}
+                type="text"
+                placeholder="username"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="email">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                type="email"
+                placeholder="Enter new email"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="birthday">
+              <Form.Label>Birthday:</Form.Label>
+              <Form.Control
+                onChange={(e) => setBirthday(e.target.value)}
+                value={birthday}
+                type="date"
+                placeholder="birthday"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                value={password}
+                placeholder="Password"
+              />
+            </Form.Group>
+            <Stack direction="horizontal" gap={12}>
+              <Button variant="primary" onClick={updateUser}>
+                Update your profile
+              </Button>
+              &nbsp;&nbsp;&nbsp;
+              <Button className="ms-auto" variant="danger" onClick={handleShow}>
+                Delete your profile
+              </Button>
+            </Stack>
+          </Form>
         </Col>
       </Row>
       <Row>
-        <Col>**INSERT PROFILE INFORMATION**</Col>
-      </Row>
-      <Row>
         <Col>
+          <br />
           <h3>Favorite Movies:</h3>
           {showFavoritesList()}
         </Col>
       </Row>
+      {cancelUserModal()}
     </Container>
   );
 }

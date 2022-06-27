@@ -13,6 +13,8 @@ import {
 
 // import "./navbar-view.scss";
 
+// REVIEW Code is WAD; needs styling
+
 export function NavbarView({ user }) {
   const onLoggedOut = () => {
     localStorage.clear();
@@ -41,7 +43,7 @@ export function NavbarView({ user }) {
           <Nav className="me-auto navbar-elements__style">
             {isAuth() && (
               <Nav.Link as={Link} to={`/`}>
-                Movies
+                Movie List
               </Nav.Link>
             )}
 
