@@ -3,7 +3,3 @@ node_modules
 .gitattributes
 .cache
 .parcel-cache
-**/src/index.css.map
-**/src/index.min.css
-**/src/index.min.css.map
-**/src/index.css
