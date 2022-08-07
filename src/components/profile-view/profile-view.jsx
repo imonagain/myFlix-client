@@ -40,7 +40,7 @@ export function ProfileView({ movies }) {
         setFavoriteMovies(response.data.FavoriteMovies);
         console.log(response.data);
       })
-      .catch((e) => {
+      .catch((error) => {
         console.log(error);
       });
   };
